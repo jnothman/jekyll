@@ -19,10 +19,7 @@ avatar_alt: A peacock with a woman's head
 doi: 10.46430/phen0059
 ---
 
-<div class="alert alert-warning">
-A problem with the instructions in this lesson has been reported. Readers are advised that they will not be able to complete the lesson in its current form due to changes in technology beyond the control of the author. We are investigating solutions and appreciate your patience.	 18 August 2020.
-</div>
-
+{% include alert.html text= 'This lesson has been updated to reflect recent changes to the security features of Internet Explorer and Firefox browsers. Like Chrome and Safari before them, these two applications now make in-browser transformations difficult, because they do not include **XSL 1.0** transformers. We've made an adjustment at the Choosing and Preparing XML Data step, which will enable you to complete this tutorial.	 15 October 2021.' %}
 
 {% include toc.html %}
 
@@ -109,9 +106,7 @@ When you become more comfortable with XML and XSL, and are ready to tackle more 
 
 ### Transformers
 
-Once you have obtained your preferred text editor, you will need to obtain an **XSL transformer**. There are two ways to use XSL stylesheets to transform your XML data: on the command line or through an embedded transformer within another programme. Although there are many stand-alone programmes for XSL transformation, you can also undertake simple transformations using an internet browser.
-
-Although Chrome and Safari's security features make in-browser transformations difficult, some other internet browsers, such as ([Internet Explorer](http://windows.microsoft.com/en-gb/internet-explorer/download-ie) and [Firefox](https://www.mozilla.org/en-GB/firefox/new/)), include an **XSL 1.0** transformer, which will provide all of the functionality that you will need for this tutorial. If you don't already have one of these browsers on your computer, download and install whichever you feel most comfortable using and then proceed to the next section.
+Once you have obtained your preferred text editor, you will need to obtain an **XSL transformer**. There are two ways to use XSL stylesheets to transform your XML data: on the command line or through an embedded transformer within another programme. Although there are many stand-alone programmes for XSL transformation, you can also undertake simple transformations using a locally-run a web server, then view the file in your favourite internet browser. The following sections will guide you through the steps to achieve this. 
 
 ## Choosing and Preparing XML Data
 
@@ -148,7 +143,11 @@ The main TEISAP.XML database has been encoded to [**Text-Encoding Initiative** (
 
 Open the outputs folder and continue into the XML folder. Here you will find a folder entitled **Simplified**. Copy the **SimplifiedSAP.xml** file to your desktop.
 
-Using your chosen web browser, open *SimplifiedSAP.xml* and examine the file. You can do this using the standard 'Open' function of your browser's tool bar, or by dragging-and-dropping the file from your desktop into the browser window.
+Next, open your computer's Command Line application. If you are using Windows, click Start and search for "Command Prompt". If you are using a Mac operating system, navigate to the Launchpad and search for "Terminal". We are going to run a simple command to establish a local web server on your computer. You can choose between using a command written in Python or R. 
+
+If you want to use the Python command, type `python3 -m http.server` and press return. Then paste the URL `http://localhost:8000/SimplifiedSAP.xml` into your favourite browser to open *SimplifiedSAP.xml* and examine the file. 
+
+Alternatively, you can use the R command, but you will need to have the `servr` package installed. Otherwise, the steps are almost the same. Open Command Prompt/Terminal, naviagte to the folder where your xml files are saved, enter the command `Rscript -e "servr::httd()" -b`, and press return. This will launch your default browser, and show you all the files inside that folder. Click the file you want to view to open it.
 
 {% include figure.html filename="transforming-xml-with-xsl-2.png" caption="Figure 2: Viewing the XML" %}
 
